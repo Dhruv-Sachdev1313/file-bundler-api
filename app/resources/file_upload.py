@@ -26,7 +26,6 @@ class FileUploadResource(Resource):
                 with open(extracted_file, 'rb') as f:
                     obj_key = f"{file.filename}/{extracted_file}"
                     s3_service.upload_file(f, Config.S3_BUCKET, obj_key)
-                    db_services.insert_document(extracted_file, f.read(), object_key=obj_key)
             return {'message': 'File uploaded successfully'}, 200
         else:
             return {'message': 'Invalid file type'}, 400
