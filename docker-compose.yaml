@@ -4,20 +4,15 @@ services:
     build: .
     ports:
       - "5005:5000"
-    environment:
-      - AWS_REGION=your-aws-region
-      - S3_BUCKET=your-incoming-bucket-name
-      - FINAL_BUCKET=your-final-bucket-name
-      - DATABASE_URL=postgresql://postgres:password@db:5432/mydatabase
+    env_file:
+      - api.env
     depends_on:
       - db
 
   db:
     image: postgres:13
-    environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+    env_file:
+      - db.env
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
