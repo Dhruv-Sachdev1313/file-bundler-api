@@ -1,0 +1,75 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment directories
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Node.js
+node_modules/
+
+# Docker
+.dockerignore
+docker-compose.yml
+docker-compose.override.yml
+
+# Git
+.git/
+.gitignore
+
+# Tests
+tests/
+.coverage
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.env
+*.env
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Temporary files
+temp/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Local dev settings
+local_settings.py
+
+# PostgreSQL data (if you are not using named volumes)
+postgres_data/
