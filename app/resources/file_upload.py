@@ -1,7 +1,6 @@
 from app.services import db_services
 from flask import request
 from flask_restful import Resource
-# from ..services.s3_service.py import S3Service
 from app.services.s3_services import S3Service
 from app.services.db_services import DBService
 from zipfile import ZipFile
@@ -17,13 +16,12 @@ class FileUploadResource(Resource):
             return {'message': 'No selected file'}, 400
         if file and file.filename.endswith('.zip'):
             s3_service = S3Service()
-            db_services = DBService()
             # make a temp directory and extract the zip file
             with ZipFile(file, 'r') as zip_ref:
                 zip_ref.extractall('/tmp')
             # upload the extracted files to S3   and add an entry to the database
             for extracted_file in zip_ref.namelist():
-                with open(extracted_file, 'rb') as f:
+                with open("/tmp/"+extracted_file, 'rb') as f:
                     obj_key = f"{file.filename}/{extracted_file}"
                     s3_service.upload_file(f, Config.S3_BUCKET, obj_key)
             return {'message': 'File uploaded successfully'}, 200
