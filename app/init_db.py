@@ -2,7 +2,6 @@ import psycopg2
 from config import Config
 
 def init_db():
-    print(Config.SQLALCHEMY_DATABASE_URI)
     conn = psycopg2.connect(Config.SQLALCHEMY_DATABASE_URI)
     cursor = conn.cursor()
 
@@ -11,6 +10,7 @@ def init_db():
         id SERIAL PRIMARY KEY,
         filename VARCHAR(255) NOT NULL,
         content TEXT,
+        object_key VARCHAR(255) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     """)
