@@ -4,7 +4,12 @@ from app import Config
 
 class S3Service:
     def __init__(self):
-        self.s3_client = boto3.client('s3', region_name=Config.AWS_REGION)
+        self.s3_client = boto3.client(
+            's3', 
+            region_name=Config.AWS_REGION, 
+            aws_access_key_id=Config.AWS_ACCESS_KEY_ID, 
+            aws_secret_access_key=Config.AWS_SECRET_ACCESS_KEY
+        )
 
     def upload_file(self, file, bucket_name, object_name):
         try:
