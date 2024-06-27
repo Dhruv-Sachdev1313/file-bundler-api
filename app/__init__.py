@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from app.config import Config  # Absolute import
+from app.init_db import init_db
 
 db = SQLAlchemy()
 
@@ -19,7 +20,8 @@ def create_app():
     api.add_resource(SearchResource, '/search')
     api.add_resource(TextSearchResource, '/text-search')
 
-    with app.app_context():
-        db.create_all()
+    # with app.app_context():
+    #     db.create_all()
+    init_db()
 
     return app
