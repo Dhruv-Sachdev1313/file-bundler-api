@@ -88,3 +88,6 @@ local_settings.py
 
 # PostgreSQL data (if you are not using named volumes)
 postgres_data/
+
+#LSP configs
+pyrightconfig.json
